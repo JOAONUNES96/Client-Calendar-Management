@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.elasticsearch.annotations.Document
 import org.springframework.data.elasticsearch.annotations.Field
 import org.springframework.data.elasticsearch.annotations.FieldType
+import java.time.LocalDateTime
 
 /**
  * ElasticSearch Document for an event.
@@ -16,7 +17,7 @@ data class EventDocument(
     @Field(type = FieldType.Text)
     val name: String,
     @Field(type = FieldType.Date)
-    val dateTime: String,
+    val dateTime: LocalDateTime,
     @Field(type = FieldType.Text)
     val description: String,
     @Field(type = FieldType.Text)
