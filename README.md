@@ -30,5 +30,5 @@ The application will handle the creation and management of calendar items for cl
 
 ## Current Status
 
-The project is currently in the planning and setup phase. Specific functionalities and endpoints will be defined in the upcoming development cycles.
+The project is currently in the initial development phase. At the moment was developed the integration with ElasticSearch and the first API Endpoint. It's possible that more specific functionalities and endpoints will be defined in the upcoming development cycles.
 
