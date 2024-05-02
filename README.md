@@ -10,7 +10,6 @@ This project aims to develop a back-end application for managing calendar events
 The application will handle the creation and management of calendar items for clients, including:
 - Real-time processing of client and task creation through Kafka messages.
 - REST API for managing (create, read, delete) calendar items.
-- Search capabilities powered by Elasticsearch database.
 
 ## Technologies
 

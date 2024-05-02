@@ -24,7 +24,6 @@ interface TaskRepository : ReactiveElasticsearchRepository<TaskDocument, String>
 
 @Repository
 interface EventRepository : ReactiveElasticsearchRepository<EventDocument, String>{
-    fun save(event: EventDocument): EventDocument
     override fun findById(id: String):Mono<EventDocument>
     override fun findAll(): Flux<EventDocument>
     override fun deleteById(id: String): Mono<Void>
