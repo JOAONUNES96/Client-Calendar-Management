@@ -1,0 +1,14 @@
+services:
+  elasticsearch-service:
+    image: elasticsearch:7.17.6
+    container_name: client-calendar-elasticsearch
+    healthcheck:
+      start_period: 10s
+      test: exit 0
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      ingest.geoip.downloader.enabled: 'false'
+      discovery.type: 'single-node'
+      ES_JAVA_OPTS: '-Xms256m -Xmx512m -XX:MaxDirectMemorySize=536870912'

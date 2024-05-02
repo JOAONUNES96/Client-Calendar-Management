@@ -1,7 +1,7 @@
-package com.flutteruki.calendar.management.infra.mappers
+package com.flutteruki.calendar.management.infrastructure.mappers
 
 import com.flutteruki.calendar.management.domain.model.Client
-import com.flutteruki.calendar.management.infra.elastic.ClientDocument
+import com.flutteruki.calendar.management.infrastructure.elastic.ClientDocument
 
 object ClientMapper {
     fun toClientDocument(client: Client): ClientDocument {

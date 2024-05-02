@@ -1,7 +1,7 @@
-package com.flutteruki.calendar.management.infra.mappers
+package com.flutteruki.calendar.management.infrastructure.mappers
 
 import com.flutteruki.calendar.management.domain.model.Task
-import com.flutteruki.calendar.management.infra.elastic.TaskDocument
+import com.flutteruki.calendar.management.infrastructure.elastic.TaskDocument
 
 object TaskMapper {
     fun toTaskDocument(task: Task): TaskDocument {

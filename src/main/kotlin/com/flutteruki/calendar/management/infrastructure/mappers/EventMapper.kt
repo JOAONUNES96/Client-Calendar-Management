@@ -1,7 +1,7 @@
-package com.flutteruki.calendar.management.infra.mappers
+package com.flutteruki.calendar.management.infrastructure.mappers
 
 import com.flutteruki.calendar.management.domain.model.Event
-import com.flutteruki.calendar.management.infra.elastic.EventDocument
+import com.flutteruki.calendar.management.infrastructure.elastic.EventDocument
 
 object EventMapper {
     fun toEventDocument(event: Event): EventDocument {
