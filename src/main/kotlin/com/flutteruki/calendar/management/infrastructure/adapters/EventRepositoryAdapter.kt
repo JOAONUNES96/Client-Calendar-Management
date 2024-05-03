@@ -8,8 +8,6 @@ import kotlinx.coroutines.reactive.awaitFirstOrNull
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Component
 
 @Component
@@ -43,9 +41,12 @@ class EventRepositoryAdapter(
         TODO("Not yet implemented")
     }
 
-    override suspend fun findAll(pageable: Pageable): Page<Event> {
+    override suspend fun findAll(): List<Event> {
+        logger.debug("operation=findAll, message='Finding all events with pagination and sorting'")
         TODO("Not yet implemented")
+
     }
+
 
     override suspend fun deleteById(id: String): Boolean {
         return try {

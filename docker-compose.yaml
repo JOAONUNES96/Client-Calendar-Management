@@ -1,6 +1,6 @@
 services:
   elasticsearch-service:
-    image: elasticsearch:7.17.6
+    image: elasticsearch:8.13.0
     container_name: client-calendar-elasticsearch
     healthcheck:
       start_period: 10s
@@ -12,3 +12,4 @@ services:
       ingest.geoip.downloader.enabled: 'false'
       discovery.type: 'single-node'
       ES_JAVA_OPTS: '-Xms256m -Xmx512m -XX:MaxDirectMemorySize=536870912'
+      xpack.security.enabled: 'false' # This line disables security

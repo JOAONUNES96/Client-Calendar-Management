@@ -2,18 +2,19 @@ package com.flutteruki.calendar.management.application.api
 
 import com.flutteruki.calendar.management.domain.model.Event
 import com.flutteruki.calendar.management.domain.ports.EventRepositoryPort
-import org.elasticsearch.transport.TransportChannel.logger
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/api/events")
 class EventController @Autowired constructor(
     private val eventRepository: EventRepositoryPort
 ) {
+    private val logger: Logger = LoggerFactory.getLogger(this.javaClass)
 
     //The purpose of the app is to upsert information using kafka messages, however I added this endpoint to test the application
     @PostMapping
@@ -51,5 +52,6 @@ curl -X POST -H "Content-Type: application/json" -d '{
         }
     }
 //curl -X DELETE http://localhost:8080/api/events/1
+
 
 }

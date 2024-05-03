@@ -1,5 +1,7 @@
 package com.flutteruki.calendar.management.infrastructure.elastic
 
+import org.springframework.data.domain.Pageable
+import org.springframework.data.elasticsearch.core.query.Query
 import org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
