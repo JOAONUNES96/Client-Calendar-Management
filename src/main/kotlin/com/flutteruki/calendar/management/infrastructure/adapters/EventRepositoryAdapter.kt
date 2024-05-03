@@ -8,6 +8,8 @@ import kotlinx.coroutines.reactive.awaitFirstOrNull
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Component
 
 @Component
@@ -36,14 +38,26 @@ class EventRepositoryAdapter(
         }
         return elasticSuccess
     }
-}
 
-/*
-curl -X POST -H "Content-Type: application/json" -d '{
-"id": "1",
-"name": "Evento de teste",
-"dateTime": "2024-05-02T13:56:11",
-"description": "Este é um evento de teste",
-"location": "Localização de teste",
-"participants": []
-}' http://localhost:8080/api/events*/
+    override suspend fun findById(id: String): Event? {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun findAll(pageable: Pageable): Page<Event> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteById(id: String): Boolean {
+        return try {
+            logger.debug("operation=deleteById, message='deleting Event with id {}'", id)
+            springDataEventRepository.deleteById(id).awaitFirstOrNull()
+            true
+        } catch (e: Exception) {
+            logger.error(
+                "operation=deleteById, message=Failed to delete " +
+                        "in Elastic repository, record=$id", e
+            )
+            false
+        }
+    }
+}

@@ -2,9 +2,12 @@ package com.flutteruki.calendar.management.application.api
 
 import com.flutteruki.calendar.management.domain.model.Event
 import com.flutteruki.calendar.management.domain.ports.EventRepositoryPort
+import org.elasticsearch.transport.TransportChannel.logger
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/api/events")
@@ -22,8 +25,7 @@ class EventController @Autowired constructor(
             ResponseEntity.internalServerError().body("Failed to add event: ${e.message}")
         }
     }
-}
-/*
+    /*
 To test this endpoint you can use the following curl command:
 
 curl -X POST -H "Content-Type: application/json" -d '{
@@ -35,3 +37,19 @@ curl -X POST -H "Content-Type: application/json" -d '{
    "participants": []
 }' http://localhost:8080/api/events
 */
+
+    @DeleteMapping("/{id}")
+    suspend fun deleteEventById(@PathVariable id: String): ResponseEntity<String> {
+        return try {
+            logger.debug("operation=deleteById, message='Attempting to delete Event with id: {}'", id)
+            eventRepository.deleteById(id)
+            logger.info("operation=deleteById, message='Successfully deleted Event with id: {}'", id)
+            ResponseEntity.ok("Event deleted successfully")
+        } catch (e: Exception) {
+            logger.error("operation=deleteById, message='Failed to delete in Elastic repository, record: $id'", e)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete event: ${e.message}")
+        }
+    }
+//curl -X DELETE http://localhost:8080/api/events/1
+
+}
